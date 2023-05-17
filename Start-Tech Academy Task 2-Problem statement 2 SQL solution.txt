@@ -1,0 +1,169 @@
+1. Create a table named ‘matches’ with appropriate data types for columns.
+
+
+CREATE TABLE matches4(
+    id INT PRIMARY KEY,
+    city VARCHAR(40),
+    date DATE,
+    player_of_match VARCHAR(40),
+    venue VARCHAR(80),
+    neutral_venue INT,
+    team1 VARCHAR(80),
+    team2 VARCHAR(80),
+    toss_winner VARCHAR(80),
+    toss_decision VARCHAR(20),
+    winner VARCHAR(80),
+    result VARCHAR(40),
+    result_margin INT,
+    eliminator VARCHAR(10),
+    method VARCHAR(10),
+    umpire1 VARCHAR(40),
+    umpire2 VARCHAR(40)   
+)
+
+
+UPDATE matches4 SET date=str_to_date(date,"%d-%m-%Y");
+
+
+2. Create a table named ‘deliveries’ with appropriate data types for columns.
+
+
+CREATE TABLE deliveries(
+    id INT,
+    inning INT,
+    _over INT,
+    ball INT,
+    batsman VARCHAR(40),
+    non_striker VARCHAR(40),
+    bowler VARCHAR(40),
+    batsman_runs INT,
+    extra_runs INT,
+    total_runs INT,
+    is_wicket INT,
+    dismissal_kind VARCHAR(40),
+    player_dismissed VARCHAR(40),
+    fielder VARCHAR(40),
+    extras_type VARCHAR(40),
+    batting_tean VARCHAR(40),
+    bowling_team VARCHAR(40),
+    FOREIGN KEY(id) REFERENCES matches4(id)
+)
+
+
+ALTER TABLE deliveries2 DROP FOREIGN KEY deliveries2_ibfk_1
+
+
+ALTER TABLE deliveries2 ADD CONSTRAINT deliveries2_ibfk_1 FOREIGN KEY(id) REFERENCES matches4(id) ON DELETE CASCADE ON UPDATE CASCADE
+
+
+3. Select the top 20 rows of the deliveries table.
+
+
+SELECT * FROM deliveries LIMIT 20;
+
+(335982, 1, 6, 5, 'RT Ponting', 'BB McCullum', 'AA Noffke', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 6, 6, 'BB McCullum', 'RT Ponting', 'AA Noffke', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 7, 1, 'BB McCullum', 'RT Ponting', 'Z Khan', 0, 0, 0, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 7, 2, 'BB McCullum', 'RT Ponting', 'Z Khan', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 7, 3, 'RT Ponting', 'BB McCullum', 'Z Khan', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 7, 4, 'BB McCullum', 'RT Ponting', 'Z Khan', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 7, 5, 'RT Ponting', 'BB McCullum', 'Z Khan', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 7, 6, 'BB McCullum', 'RT Ponting', 'Z Khan', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 8, 1, 'BB McCullum', 'RT Ponting', 'JH Kallis', 0, 0, 0, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 8, 2, 'BB McCullum', 'RT Ponting', 'JH Kallis', 0, 0, 0, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 8, 3, 'BB McCullum', 'RT Ponting', 'JH Kallis', 0, 0, 0, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 8, 4, 'BB McCullum', 'RT Ponting', 'JH Kallis', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 8, 5, 'RT Ponting', 'BB McCullum', 'JH Kallis', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 8, 6, 'BB McCullum', 'RT Ponting', 'JH Kallis', 2, 0, 2, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 9, 1, 'RT Ponting', 'BB McCullum', 'SB Joshi', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 9, 2, 'BB McCullum', 'RT Ponting', 'SB Joshi', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 9, 3, 'RT Ponting', 'BB McCullum', 'SB Joshi', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 9, 4, 'BB McCullum', 'RT Ponting', 'SB Joshi', 0, 0, 0, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 9, 5, 'BB McCullum', 'RT Ponting', 'SB Joshi', 6, 0, 6, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore'),
+(335982, 1, 9, 6, 'BB McCullum', 'RT Ponting', 'SB Joshi', 1, 0, 1, 0, 'NA', 'NA', 'NA', 'NA', 'Kolkata Knight Riders', 'Royal Challengers Bangalore');
+
+
+4. Select the top 20 rows of the matches table.
+
+
+SELECT * FROM matches4 LIMIT 20;
+
+
+(335982, 'Bangalore', '2008-04-18', 'BB McCullum', 'M Chinnaswamy Stadium', 0, 'Royal Challengers Bangalore', 'Kolkata Knight Riders', 'Royal Challengers Bangalore', 'field', 'Kolkata Knight Riders', 'runs', 140, 'N', 'NA', 'Asad Rauf', 'RE Koertzen'),
+(335983, 'Chandigarh', '2008-04-19', 'MEK Hussey', 'Punjab Cricket Association Stadium, Mohali', 0, 'Kings XI Punjab', 'Chennai Super Kings', 'Chennai Super Kings', 'bat', 'Chennai Super Kings', 'runs', 33, 'N', 'NA', 'MR Benson', 'SL Shastri'),
+(335984, 'Delhi', '2008-04-19', 'MF Maharoof', 'Feroz Shah Kotla', 0, 'Delhi Daredevils', 'Rajasthan Royals', 'Rajasthan Royals', 'bat', 'Delhi Daredevils', 'wickets', 9, 'N', 'NA', 'Aleem Dar', 'GA Pratapkumar'),
+(335985, 'Mumbai', '2008-04-20', 'MV Boucher', 'Wankhede Stadium', 0, 'Mumbai Indians', 'Royal Challengers Bangalore', 'Mumbai Indians', 'bat', 'Royal Challengers Bangalore', 'wickets', 5, 'N', 'NA', 'SJ Davis', 'DJ Harper'),
+(335986, 'Kolkata', '2008-04-20', 'DJ Hussey', 'Eden Gardens', 0, 'Kolkata Knight Riders', 'Deccan Chargers', 'Deccan Chargers', 'bat', 'Kolkata Knight Riders', 'wickets', 5, 'N', 'NA', 'BF Bowden', 'K Hariharan'),
+(335987, 'Jaipur', '2008-04-21', 'SR Watson', 'Sawai Mansingh Stadium', 0, 'Rajasthan Royals', 'Kings XI Punjab', 'Kings XI Punjab', 'bat', 'Rajasthan Royals', 'wickets', 6, 'N', 'NA', 'Aleem Dar', 'RB Tiffin'),
+(335988, 'Hyderabad', '2008-04-22', 'V Sehwag', 'Rajiv Gandhi International Stadium, Uppal', 0, 'Deccan Chargers', 'Delhi Daredevils', 'Deccan Chargers', 'bat', 'Delhi Daredevils', 'wickets', 9, 'N', 'NA', 'IL Howell', 'AM Saheba'),
+(335989, 'Chennai', '2008-04-23', 'ML Hayden', 'MA Chidambaram Stadium, Chepauk', 0, 'Chennai Super Kings', 'Mumbai Indians', 'Mumbai Indians', 'field', 'Chennai Super Kings', 'runs', 6, 'N', 'NA', 'DJ Harper', 'GA Pratapkumar'),
+(335990, 'Hyderabad', '2008-04-24', 'YK Pathan', 'Rajiv Gandhi International Stadium, Uppal', 0, 'Deccan Chargers', 'Rajasthan Royals', 'Rajasthan Royals', 'field', 'Rajasthan Royals', 'wickets', 3, 'N', 'NA', 'Asad Rauf', 'MR Benson'),
+(335991, 'Chandigarh', '2008-04-25', 'KC Sangakkara', 'Punjab Cricket Association Stadium, Mohali', 0, 'Kings XI Punjab', 'Mumbai Indians', 'Mumbai Indians', 'field', 'Kings XI Punjab', 'runs', 66, 'N', 'NA', 'Aleem Dar', 'AM Saheba'),
+(335992, 'Bangalore', '2008-04-26', 'SR Watson', 'M Chinnaswamy Stadium', 0, 'Royal Challengers Bangalore', 'Rajasthan Royals', 'Rajasthan Royals', 'field', 'Rajasthan Royals', 'wickets', 7, 'N', 'NA', 'MR Benson', 'IL Howell'),
+(335993, 'Chennai', '2008-04-26', 'JDP Oram', 'MA Chidambaram Stadium, Chepauk', 0, 'Chennai Super Kings', 'Kolkata Knight Riders', 'Kolkata Knight Riders', 'bat', 'Chennai Super Kings', 'wickets', 9, 'N', 'NA', 'BF Bowden', 'AV Jayaprakash'),
+(335994, 'Mumbai', '2008-04-27', 'AC Gilchrist', 'Dr DY Patil Sports Academy', 0, 'Mumbai Indians', 'Deccan Chargers', 'Deccan Chargers', 'field', 'Deccan Chargers', 'wickets', 10, 'N', 'NA', 'Asad Rauf', 'SL Shastri'),
+(335995, 'Chandigarh', '2008-04-27', 'SM Katich', 'Punjab Cricket Association Stadium, Mohali', 0, 'Kings XI Punjab', 'Delhi Daredevils', 'Delhi Daredevils', 'bat', 'Kings XI Punjab', 'wickets', 4, 'N', 'NA', 'RE Koertzen', 'I Shivram'),
+(335996, 'Bangalore', '2008-04-28', 'MS Dhoni', 'M Chinnaswamy Stadium', 0, 'Royal Challengers Bangalore', 'Chennai Super Kings', 'Chennai Super Kings', 'bat', 'Chennai Super Kings', 'runs', 13, 'N', 'NA', 'BR Doctrove', 'RB Tiffin'),
+(335997, 'Kolkata', '2008-04-29', 'ST Jayasuriya', 'Eden Gardens', 0, 'Kolkata Knight Riders', 'Mumbai Indians', 'Kolkata Knight Riders', 'bat', 'Mumbai Indians', 'wickets', 7, 'N', 'NA', 'BF Bowden', 'AV Jayaprakash'),
+(335998, 'Delhi', '2008-04-30', 'GD McGrath', 'Feroz Shah Kotla', 0, 'Delhi Daredevils', 'Royal Challengers Bangalore', 'Royal Challengers Bangalore', 'field', 'Delhi Daredevils', 'runs', 10, 'N', 'NA', 'Aleem Dar', 'I Shivram'),
+(335999, 'Hyderabad', '2008-05-01', 'SE Marsh', 'Rajiv Gandhi International Stadium, Uppal', 0, 'Deccan Chargers', 'Kings XI Punjab', 'Kings XI Punjab', 'field', 'Kings XI Punjab', 'wickets', 7, 'N', 'NA', 'BR Doctrove', 'RB Tiffin'),
+(336000, 'Jaipur', '2008-05-01', 'SA Asnodkar', 'Sawai Mansingh Stadium', 0, 'Rajasthan Royals', 'Kolkata Knight Riders', 'Rajasthan Royals', 'bat', 'Rajasthan Royals', 'runs', 45, 'N', 'NA', 'RE Koertzen', 'GA Pratapkumar'),
+(336001, 'Chennai', '2008-05-02', 'V Sehwag', 'MA Chidambaram Stadium, Chepauk', 0, 'Chennai Super Kings', 'Delhi Daredevils', 'Chennai Super Kings', 'bat', 'Delhi
+Daredevils', 'wickets', 8, 'N', 'NA', 'BF Bowden', 'K Hariharan');
+
+
+5. Fetch data of all the matches played on 2nd May 2013.
+
+
+SELECT * from matches4 WHERE date='2013-05-02';
+
+
+(598041, 'Chennai', '2013-05-02', 'SK Raina', 'MA Chidambaram Stadium, Chepauk', 0, 'Chennai Super Kings', 'Kings XI Punjab', 'Chennai Super Kings', 'bat', 'Chennai Super Kings', 'runs', 15, 'N', 'NA', 'M Erasmus', 'VA Kulkarni'),
+(598042, 'Pune', '2013-05-02', 'AB de Villiers', 'Subrata Roy Sahara Stadium', 0, 'Pune Warriors', 'Royal Challengers Bangalore', 'Royal Challengers Bangalore', 'bat', 'Royal Challengers Bangalore', 'runs', 17, 'N', 'NA', 'Aleem Dar', 'C Shamshuddin');
+
+
+6. Fetch data of all the matches where the margin of victory is more than 100 runs.
+
+
+SELECT * FROM matches4 WHERE result = 'runs' AND result_margin > 100;
+
+
+(335982, 'Bangalore', '2008-04-18', 'BB McCullum', 'M Chinnaswamy Stadium', 0, 'Royal Challengers Bangalore', 'Kolkata Knight Riders', 'Royal Challengers Bangalore', 'field', 'Kolkata Knight Riders', 'runs', 140, 'N', 'NA', 'Asad Rauf', 'RE Koertzen'),
+(336038, 'Mumbai', '2008-05-30', 'SR Watson', 'Wankhede Stadium', 0, 'Delhi Daredevils', 'Rajasthan Royals', 'Delhi Daredevils', 'field', 'Rajasthan Royals', 'runs', 105, 'N', 'NA', 'BF Bowden', 'RE Koertzen'),
+(501260, 'Dharamsala', '2011-05-17', 'AC Gilchrist', 'Himachal Pradesh Cricket Association Stadium', 0, 'Kings XI Punjab', 'Royal Challengers Bangalore', 'Kings XI Punjab', 'bat', 'Kings XI Punjab', 'runs', 111, 'N', 'NA', 'Asad Rauf', 'AM Saheba'),
+(598027, 'Bangalore', '2013-04-23', 'CH Gayle', 'M Chinnaswamy Stadium', 0, 'Royal Challengers Bangalore', 'Pune Warriors', 'Pune Warriors', 'field', 'Royal Challengers Bangalore', 'runs', 130, 'N', 'NA', 'Aleem Dar', 'C Shamshuddin'),
+(829785, 'Bangalore', '2015-05-06', 'CH Gayle', 'M Chinnaswamy Stadium', 0, 'Royal Challengers Bangalore', 'Kings XI Punjab', 'Kings XI Punjab', 'field', 'Royal Challengers Bangalore', 'runs', 138, 'N', 'NA', 'RK Illingworth', 'VA Kulkarni'),
+(980987, 'Bangalore', '2016-05-14', 'AB de Villiers', 'M Chinnaswamy Stadium', 0, 'Royal Challengers Bangalore', 'Gujarat Lions', 'Gujarat Lions', 'field', 'Royal Challengers Bangalore', 'runs', 144, 'N', 'NA', 'AY Dandekar', 'VK Sharma'),
+(1082635, 'Delhi', '2017-05-06', 'LMP Simmons', 'Feroz Shah Kotla', 0, 'Delhi Daredevils', 'Mumbai Indians', 'Delhi Daredevils', 'field', 'Mumbai Indians', 'runs', 146, 'N', 'NA', 'Nitin Menon', 'CK Nandan'),
+(1136601, 'Kolkata', '2018-05-09', 'Ishan Kishan', 'Eden Gardens', 0, 'Kolkata Knight Riders', 'Mumbai Indians', 'Kolkata Knight Riders', 'field', 'Mumbai Indians', 'runs', 102, 'N', 'NA', 'KN Ananthapadmanabhan', 'AK Chaudhary'),
+(1175366, 'Hyderabad', '2019-03-31', 'JM Bairstow', 'Rajiv Gandhi International Stadium, Uppal', 0, 'Sunrisers Hyderabad', 'Royal Challengers Bangalore', 'Royal Challengers Bangalore', 'field', 'Sunrisers Hyderabad', 'runs', 118, 'N', 'NA', 'KN Ananthapadmanabhan', 'S Ravi');
+
+
+
+7. Fetch data of all the matches where the final scores of both teams tied and order it in descending order of the date.
+
+
+SELECT * from matches4 WHERE result = 'tie' ORDER BY date DESC;
+
+
+(1216512, 'Abu Dhabi', '2020-10-18', 'LH Ferguson', 'Sheikh Zayed Stadium', 0, 'Kolkata Knight Riders', 'Sunrisers Hyderabad', 'Sunrisers Hyderabad', 'field', 'Kolkata Knight Riders', 'tie', 0, 'Y', 'NA', 'PG Pathak', 'S Ravi'),
+(1216517, 'Dubai', '2020-10-18', 'KL Rahul', 'Dubai International Cricket Stadium', 0, 'Mumbai Indians', 'Kings XI Punjab', 'Mumbai Indians', 'bat', 'Kings XI Punjab', 'tie', 0, 'Y', 'NA', 'Nitin Menon', 'PR Reiffel'),
+(1216547, 'Dubai', '2020-09-28', 'AB de Villiers', 'Dubai International Cricket Stadium', 0, 'Royal Challengers Bangalore', 'Mumbai Indians', 'Mumbai Indians', 'field', 'Royal Challengers Bangalore', 'tie', 0, 'Y', 'NA', 'Nitin Menon', 'PR Reiffel'),
+(1216493, 'Dubai', '2020-09-20', 'MP Stoinis', 'Dubai International Cricket Stadium', 0, 'Delhi Capitals', 'Kings XI Punjab', 'Kings XI Punjab', 'field', 'Delhi Capitals', 'tie', 0, 'Y', 'NA', 'AK Chaudhary', 'Nitin Menon'),
+(1178426, 'Mumbai', '2019-05-02', 'JJ Bumrah', 'Wankhede Stadium', 0, 'Mumbai Indians', 'Sunrisers Hyderabad', 'Mumbai Indians', 'bat', 'Mumbai Indians', 'tie', 0, 'Y', 'NA', 'CK Nandan', 'S Ravi'),
+(1175365, 'Delhi', '2019-03-30', 'PP Shaw', 'Feroz Shah Kotla', 0, 'Delhi Capitals', 'Kolkata Knight Riders', 'Delhi Capitals', 'field', 'Delhi Capitals', 'tie', 0, 'Y', 'NA', 'AY Dandekar', 'Nitin Menon'),
+(1082625, 'Rajkot', '2017-04-29', 'KH Pandya', 'Saurashtra Cricket Association Stadium', 0, 'Gujarat Lions', 'Mumbai Indians', 'Gujarat Lions', 'bat', 'Mumbai Indians', 'tie', 0, 'Y', 'NA', 'AK Chaudhary', 'CB Gaffaney'),
+(829741, 'Ahmedabad', '2015-04-21', 'SE Marsh', 'Sardar Patel Stadium, Motera', 0, 'Rajasthan Royals', 'Kings XI Punjab', 'Kings XI Punjab', 'field', 'Kings XI Punjab', 'tie', 0, 'Y', 'NA', 'M Erasmus', 'S Ravi'),
+(729315, 'Abu Dhabi', '2014-04-29', 'JP Faulkner', 'Sheikh Zayed Stadium', 1, 'Kolkata Knight Riders', 'Rajasthan Royals', 'Rajasthan Royals', 'bat', 'Rajasthan Royals', 'tie', 0, 'Y', 'NA', 'Aleem Dar', 'AK Chaudhary'),
+(598017, 'Bangalore', '2013-04-16', 'V Kohli', 'M Chinnaswamy Stadium', 0, 'Royal Challengers Bangalore', 'Delhi Daredevils', 'Royal Challengers Bangalore', 'field', 'Royal Challengers Bangalore', 'tie', 0, 'Y', 'NA', 'M Erasmus', 'VA Kulkarni'),
+(598004, 'Hyderabad', '2013-04-07', 'GH Vihari', 'Rajiv Gandhi International Stadium, Uppal', 0, 'Sunrisers Hyderabad', 'Royal Challengers Bangalore', 'Royal Challengers Bangalore', 'bat', 'Sunrisers Hyderabad', 'tie', 0, 'Y', 'NA', 'AK Chaudhary', 'S Ravi'),
+(419121, 'Chennai', '2010-03-21', 'J Theron', 'MA Chidambaram Stadium, Chepauk', 0, 'Chennai Super Kings', 'Kings XI Punjab', 'Chennai Super Kings', 'field', 'Kings XI Punjab', 'tie', 0, 'Y', 'NA', 'K Hariharan', 'DJ Harper'),
+(392190, 'Cape Town', '2009-04-23', 'YK Pathan', 'Newlands', 1, 'Kolkata Knight Riders', 'Rajasthan Royals', 'Kolkata Knight Riders', 'field', 'Rajasthan Royals', 'tie', 0, 'Y', 'NA', 'MR Benson', 'M Erasmus');
+
+
+8. Get the count of cities that have hosted an IPL match.
+
+
+SELECT COUNT(DISTINCT city) FROM matches4;
+
+(33);
